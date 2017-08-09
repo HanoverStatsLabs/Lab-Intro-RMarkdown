@@ -1,0 +1,14 @@
+---
+title: "Lab 3: Type your title here"
+author: "Type your name here"
+date: "Type the date here"
+output:
+  html_document:
+    default: yes
+    number_sections: yes
+  pdf_document: default
+  word_document: default
+---
+
+# First section's title
+

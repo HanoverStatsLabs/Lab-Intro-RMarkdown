@@ -1,14 +1,53 @@
 ---
-title: "Lab 3: Type your title here"
+title: 'Lab 3: Type your title here'
 author: "Type your name here"
 date: "Type the date here"
 output:
   html_document:
     default: yes
     number_sections: yes
-  pdf_document: default
+    theme: sandstone
+  pdf_document:
+    number_sections: yes
   word_document: default
 ---
 
-# First section's title
+# Introduction to Markdown Syntax
 
+We start a new section by using the pound sign, followed by the section title. The sections will be automatically numbered because of our header specifications.
+
+## Use more pounds for deeper subsections
+
+Start a new paragraph by simply adding a blank line.
+
+> Make a blockquote out of text by preceding the lines
+> with the "greater than" symbol.
+>
+>> You can also do more nested blockquotes.
+
+Emphasize *text* (italics) by surrounding the text in single asterisks. Emphasize **more strongly** (bold) with double asterisks.
+
+- Make unnumbered lists by starting each item with a dash.
+- Here's the second item!
+    - You can create sublists by starting with 4 spaces.
+
+1. Numbered lists use numbers
+2. followed by periods.
+
+R code chunks look like this (the "backtick" is typically to the left of the number key row):
+```{r}
+4 + 5
+```
+When the file compiles, the code will be evaluated and results will be printed. That behavior can be changed (e.g. hide the results or prevent the code itself from appearing) by adding more in the `{r}` part.
+
+Surrounding some text with `single backticks` makes it appear in "typewriter" font. This is useful for inline code.
+
+You can add horizontal rules by a sequence of three or more asterisks:
+
+***********
+
+You can also easily add subscripts~2~ or superscripts^3^.
+
+There are many more specialized features that are available. A quick Google search can usually provide you with some resources, though the above should be sufficient for most reports.
+
+# Statistical Work

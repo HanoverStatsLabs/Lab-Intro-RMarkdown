@@ -25,11 +25,11 @@ Start a new paragraph by simply adding a blank line.
 > Make a blockquote out of text by preceding the lines
 > with the "greater than" symbol.
 >
->> You can also do more nested blockquotes.
+>> You can also make nested blockquotes with more "greater than" signs.
 
 Emphasize *text* (italics) by surrounding the text in single asterisks. Emphasize **more strongly** (bold) with double asterisks.
 
-**Note**: When working with a RMarkdown report, it is a good idea to not use the console much, as they do not communicate directly with each other, and actions you take in the console will not have an effect in the report. For that reason it is advisable to maximize the RMarkdown window by clicking the resizing icon on its upper-right corner. This will hide/minimize the console window.
+**Note**: When working with a RMarkdown report, it is a good idea to not use the console much, as the report window and the console window do not communicate directly with each other; actions you take in the console will not count when you "knit" your report. For that reason it is advisable to maximize the RMarkdown window by clicking the resizing icon on its upper-right corner. This will hide/minimize the console window.
 
 - Make unnumbered lists by starting each item with a dash.
 - Here's the second item!
@@ -40,13 +40,15 @@ Emphasize *text* (italics) by surrounding the text in single asterisks. Emphasiz
 2. followed by periods.
 3. **DO NOW**: Add a fourth item to this list.
 
-Surrounding some text with `single backticks` makes it appear in "typewriter" font. This is useful for inline code.
+Surrounding some text with `single backticks` makes it appear in "typewriter" font. This is useful for inline code. You probably won't need to use this feature much.
 
 You can add horizontal rules by a sequence of three or more asterisks:
 
 ***********
 
-You can also easily add subscripts~2~ or superscripts^3^.
+They will be quite faint.
+
+You can easily add subscripts~2~ or superscripts^3^.
 
 There are many more specialized features that are available. A quick Google search can usually provide you with some resources, though the above should be sufficient for most reports.
 
@@ -54,21 +56,21 @@ There are many more specialized features that are available. A quick Google sear
 
 **DO NOW**: Replace the above ruler with a new subsection (two pound signs) with title "Introducing R Chunks".
 
-R code chunks look like this (the "backtick" key is typically found to the left of the number keys row):
+R code chunks look like this (see below.) Note: the "backtick" key is typically found to the left of the number keys row.
 ```{r}
 4 + 5
 ```
-When the file compiles, the R code *chunks* will be evaluated and the results will be inserted into the document. That behavior can be changed (e.g. hide the results or prevent the code itself from appearing) by adding more in the `{r}` part.
+When the file compiles, the R code *chunks* will be evaluated and the results will be inserted into the document. That behavior can be changed (e.g. hide the results or prevent the code itself from appearing) by adding more in the `{r}` part. We will see how to do that in a little while.
 
-You can insert a new code chunk by either typing the backticks and `{r}` yourself, or by using the `Insert` pulldown in in the toolbar at the top of the RMarkdown window. Choose `R` from the pulldown and the appropriate code chunk will be inserted at your cursor.
+You can insert a new code chunk by either typing the backticks and `{r}` yourself, or by using the `Insert` pulldown in the toolbar at the top of the RMarkdown window. Choose `R` from the pulldown and the appropriate code chunk will be inserted at your cursor.
 
-**DO THIS NOW**: Insert a new code chunk and put a simple mathematical expression inside the chunk.
+**DO THIS NOW**: Insert a new code chunk and put a simple mathematical expression inside the chunk. Save and knit the document to see the added chunk.
 
-In addition to compiling/knitting the document as whole, you can execute individual chunks. There are buttons to the right of each chunk to help with that.
+In addition to compiling/knitting the document as a whole, you can execute individual chunks. There are buttons to the right of each chunk to help with that.
 
-- The first button is a gear button for modifying chunk options. Use this button now to uncheck the "show warnings" option, and click apply. You will see the text `warning=FALSE` added to the top of the chunk.
+- The first button is a (rather dim) gear button for modifying chunk options. Use this button now to uncheck the "show warnings" option, and click apply. You will see the text `warning=FALSE` added to the top of the chunk.
 - The second button re-executes all the chunks before this point. This is useful to do when you restart work on a particular report.
-- The third button executes the current chunk and shows you the output. This is the most frequently used button. As you work on your report you will try out R commands in these chunks and run them to make sure they produce the output you want before moving forward. Running these chunks takes the place of entering commands in the console.
+- The third button executes the current chunk and shows you the output. This is the most frequently used button. As you work on your report you will try out R commands in these chunks and run them to make sure they produce the output you want before moving on. Running these chunks takes the place of entering commands in the console.
 
 DO NOW: Run the chunk you just created. You should see a brief output right below the chunk. You can leave it there for now or just remove it; it has no effect on the compiled report, but it does show you how these chunks might look in the compiled report. These "output" sections also have three convenient action buttons to their right. Take a moment to familiarize yourself with these buttons.
 
@@ -76,23 +78,24 @@ We will now begin our more specific statistical investigations.
 
 # Statistical Work
 
-Before you work on a new report, you typically need to at least load the `hanoverbase` package. The following code chunk accomplishes that.
+Recall that before we start any work, in particular whenever we start a new report, we need to load our main functions package, `hanoverbase`. The following code chunk accomplishes that, and it should appear early on in the report.
 ```{r}
 library(hanoverbase)
 ```
 By default this chunk will print out lots of messages which we do not want to see. Use the gear button at the right side of the chunk to:
 
-- Not show warnings or messages
-- Show nothing but run the code (option in the `Output` pulldown)
+- Not show warnings, not show messages
+- Show nothing, but run the code (option in the `Output` pulldown)
 
 When you click `Apply`, this should add a couple of options to the top of your chunk, and when you compile/knit the report this chunk will not show up at all.
 
-You should however go ahead and run your chunk now. This will load the `hanoverbase` package, which we will use in the remainder.
+You should go ahead and **run your chunk now**. This will load the `hanoverbase` package, which we will use in the remainder.
 
-We must next load the counties data. We similarly do not care about seeing the output of this chunk, so change its settings to match the previous chunk.
+We must next load the counties data. We similarly do not care about seeing the output of this chunk, so change its settings to match the previous chunk, and then run the chunk.
 ```{r}
 data(counties)
 ```
+To fully load the dataset we need to use the `View(counties)` command. BUT this command must be run in the Console, it cannot be in an R chunk. DO THIS NOW.
 
 ## Black Population across Indiana
 
@@ -106,7 +109,7 @@ Type into this next chunk the code for producing the five number summary for the
 ```{r}
 "Replace this"
 ```
-If you have done this correctly, then when you run the chunk you should see the five number summary and the mean. You should be seeing a median of 0.65 and a mean of 2.540217.
+If you have done this correctly, then when you run the chunk you should see the five number summary and the mean, standard deviation an count. You should be seeing a median of $0.65$ and a mean of $2.540217$. Notice that the mean is much larger than the median. What does that indicate about the underlying distribution?
 
 We should next produce a suitable graph to visualize the distribution of this quantitative variable. Do so in this code chunk.
 ```{r}
@@ -116,8 +119,11 @@ What are the main features of the distribution (range, modes, skewness, outliers
 
 > Answer here.
 > You can use multiple lines but they all become a single paragraph.
+> You can also write very long lines and they will wrap around. Pay attention to the line numbering on the left. You only need the ">" sign if you are truly starting a new line.
 >
 > Have a line with just the `>` sign if you want to create a new paragraph.
+
+Don't forget to knit and look at how your answer appears in the HTML view.
 
 Provide explanations for each of these features. E.g. how do the range and the mode make sense? Does the direction of the skewness, if any, make sense? How do you explain the outliers, if any (don't forget you can always examine the data table by double-clicking it in the Environment pane)?
 
@@ -128,9 +134,11 @@ Which of the mean or median is a better measure of the center of the distributio
 
 >
 
-**IMPORTANT NOTE**: The code chunks that follow have a setting of ` eval=FALSE`, in order to allow you to compile/knit the rest of the file without errors. As you get to each chunk, you should remove the `eval=FALSE` parts, and the commas preceding them.
+**IMPORTANT NOTE**: The code chunks that follow have a setting of ` eval=FALSE`, in order to allow you to compile/knit the rest of the file without errors. As you get to each chunk, you should remove the `eval=FALSE` parts, and the commas preceding them, leaving just a `{r}`.
 
-At this point we may want to compare the individual county percentages with the overall state percentage of black population. We compute this now, and along the way introduce two new commands. The first command (`sum`) allows us to add up values across rows. In this instance, we want to compute the total number of blacks in the state. We do this by computing the total number in a county by multiplying the black proportion with the county population, then add these all up:
+At this point we may want to compare the individual county percentages with the overall state percentage of black population. We compute this percentage now, and along the way introduce two new commands.
+
+The first command (`sum`) allows us to add up values across rows. In this instance, we want to compute the total number of blacks in the state of Indiana. We do this by computing the total number in a county by multiplying the black proportion with the county population, then add these all up:
 ```{r, eval=FALSE}
 blackPopIndiana <- sum(~black / 100 * pop2010, data=indianaCounties)
 ```
@@ -140,7 +148,10 @@ popIndiana <- sum(~pop2010, data=indianaCounties)
 blackPercentIndiana <- blackPopIndiana / popIndiana * 100
 blackPercentIndiana
 ```
-The third line simply prints out that value. We now add that percent to our histogram of the black distribution (you did do a histogram earlier, right?).
+The third line simply prints out that value.
+
+We now add that percent to our histogram of the black distribution (you did do a histogram earlier, right?).
+
 ```{r, eval=FALSE}
 ladd(panel.abline(v=9.127))
 ```
@@ -149,13 +160,13 @@ This is a considerably more complicated command, but it basically says the follo
 
 - We want to *add* to the previous graph (`ladd`)
 - The shape we want to add is that of a line (`panel.abline`)
-- It should be a vertical line at a specific value (`v=`).
+- It should be a **v**ertical line at a specific value (`v=`).
 
 We will see later variations of this command for other graph addins.
 
 How many counties in Indiana are above the state percentage? How is it possible that the state percentage is so high given that so few counties are above it?
 
->
+> Write your answer here.
 
 ## Poverty across the States
 
@@ -163,44 +174,47 @@ We now investigate the percentages of people living below the poverty line acros
 
 Create a histogram of the poverty rates across all counties in the U.S. and describe the patterns of the distribution.
 ```{r}
-"Replace this"
+"Replace this line with the appropriate command."
 ```
 
 > Describe the distribution here.
 
-What are the counties that stand out as having extremely high poverty rates? Can you find some plausible explanation for these high poverty rates (Google search encouraged).
+What are the counties that stand out as having extremely high poverty rates? Can you find some plausible explanation for these high poverty rates (Google search encouraged). Make sure to look at the overall `counties` data, not just the Indiana counties.
 
->
+> Type your answer here.
 
 Compute the overall poverty rate in the U.S. in 2010. In order to do that, you need to copy and suitably modify the one-line and three-line chunks we used earlier to compute the black percentage in Indiana.
-```{r}
-"Replace this"
-```
-What is the overall poverty rate? Where does this fall in your distribution (you can use `ladd` to add it if you wish)?
 
->
+```{r}
+"Replace this section with the appropriate commands."
+```
+
+What is the overall poverty rate? Where does this fall in your distribution (you can use `ladd` to add it to the graph if you wish)?
+
+> Type your answer here.
 
 To compare across states, a first step could be looking at the county percentages in a boxplot against the states:
 ```{r, fig.height=10}
 bwplot(state~poverty, data=counties)
 ```
 
-You might be tempted to use this plot to determine if a state has a higher level of poverty than another, but this could be misleading. For example, the plot might suggest that New Hampshire has a higher poverty rate than Rhode Island (e.g. it has a higher median/"middle box"). This is easier seen if we filter only the counties from those two states:
+You might be tempted to use this plot to determine if a state has a higher level of poverty than another, but this could be misleading. For example, the plot might suggest that New Hampshire has a higher poverty rate than Rhode Island (e.g. it has a higher median/"middle box"). This is more easily seen if we filter only the counties from those two states:
+
 ```{r}
 bwplot(state~poverty, data=counties %>% filter(state == "Rhode Island" | state == "New Hampshire"))
 ```
 
-But in reality the overall poverty rate in Rhode Island is 12.19%, which is higher than New Hampshire's 7.83%.
+But in reality the overall poverty rate in Rhode Island is 12.19%, which is higher than New Hampshire's 7.83%. Explain how this can happen.
 
-> Explain how this can happen.
+> Type your answer here.
 
 Looking again at the first boxplot, we can see that Kentucky has a larger IQR/spread than Kansas. Explain what that means in practical terms.
 
->
+> Type your answer here.
 
 In the boxplot for Hawaii, there seem to be only 3 dots. What is going on? Does Hawaii have exactly three counties?
 
->
+> Type your answer here.
 
 We can examine and compare the IQRs across all states:
 ```{r, eval=FALSE}
@@ -215,8 +229,10 @@ In order to visualize the distribution of these iqrs, we sort them and then put 
 
 Which states have unusually *high* IQRs? What does that mean for these states?
 
->
+> Type your answer here.
 
 DC appears to have an IQR of 0. Does this tell us anything?
 
->
+> Type your answer here.
+
+Look back at the lab 3 instructions to find out how to submit your completed report. Don't forget to click the red button to close your RStudio session, close all windows and log out, before you leave the lab.

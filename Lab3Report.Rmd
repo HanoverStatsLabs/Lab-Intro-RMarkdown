@@ -85,9 +85,9 @@ library(hanoverbase)
 By default this chunk will print out lots of messages which we do not want to see. Use the gear button at the right side of the chunk to:
 
 - Not show warnings, not show messages
-- Show nothing, but run the code (option in the `Output` pulldown)
+- Show nothing, but run the code (option in the **Output** pulldown)
 
-When you click `Apply`, this should add a couple of options to the top of your chunk, and when you compile/knit the report this chunk will not show up at all.
+When you click **Apply**, this should add a couple of options to the top of your chunk, and when you compile/knit the report this chunk will not show up at all.
 
 You should go ahead and **run your chunk now**. This will load the `hanoverbase` package, which we will use in the remainder.
 
@@ -105,40 +105,46 @@ indianaCounties <- "replace this"
 ```
 If you have done this correctly, then after you run the chunk you should see a new entry in the Environment pane, containing the `indianaCounties` data with 92 observations on 32 variables.
 
-Type into this next chunk the code for producing the five number summary for the percent of black population in the Indiana counties dataset. Hint: Which column contains the relevant data?
+Type into this next chunk the code for producing the five number summary for the percent of black population in the Indiana counties dataset. Hint: Which column (variable) contains the relevant data?
 ```{r}
 "Replace this"
 ```
-If you have done this correctly, then when you run the chunk you should see the five number summary and the mean, standard deviation an count. You should be seeing a median of $0.65$ and a mean of $2.540217$. Notice that the mean is much larger than the median. What does that indicate about the underlying distribution?
+If you have done this correctly, then when you run the chunk you should see the five number summary and the mean, standard deviation and count. You should be seeing a median of $0.65$ and a mean of $2.54$. Notice that the mean is much larger than the median. What does that indicate about the underlying distribution?
+
+> Put your answer here.
 
 We should next produce a suitable graph to visualize the distribution of this quantitative variable. Do so in this code chunk.
 ```{r}
 "Replace this"
 ```
-What are the main features of the distribution (range, modes, skewness, outliers)? Type your answer in this space, using the blockquote format. Make sure to express your answers in the context of this particular data. Use plain English as much as possible, as if explaining to a friend. (Do this in general for all such questions.)
+What are the main features of the distribution (range, modes, skewness, outliers)? Put your answer in the blockquote below. Make sure to express your answers in the context of this particular data. Use plain English as much as possible, as if explaining to a friend. (Do this in general for all such questions.)
 
 > Answer here.
 > You can use multiple lines but they all become a single paragraph.
-> You can also write very long lines and they will wrap around. Pay attention to the line numbering on the left. You only need the ">" sign if you are truly starting a new line.
+> You can also write very long lines and they will wrap around. Pay attention to the line numbering on the left. You only need to type another `>` sign if you are truly starting a new line.
 >
-> Have a line with just the `>` sign if you want to create a new paragraph.
+> Add an "empty" line with just the `>` sign in it if you want to create a new paragraph within the blockquote.
 
 Don't forget to knit and look at how your answer appears in the HTML view.
 
-Provide explanations for each of these features. E.g. how do the range and the mode make sense? Does the direction of the skewness, if any, make sense? How do you explain the outliers, if any (don't forget you can always examine the data table by double-clicking it in the Environment pane)?
+Provide explanations for each of these features. E.g. how do the range and the mode make sense? Does the direction of the skewness, if any, make sense? How do you explain the outliers, if any? (Don't forget you can always examine the data table by double-clicking it in the Environment pane.)
 
 > Use blockquote format for
 > your answers here as well.
 
 Which of the mean or median is a better measure of the center of the distribution? Explain why.
 
->
+> Put your answer here.
 
-**IMPORTANT NOTE**: The code chunks that follow have a setting of ` eval=FALSE`, in order to allow you to compile/knit the rest of the file without errors. As you get to each chunk, you should remove the `eval=FALSE` parts, and the commas preceding them, leaving just a `{r}`.
+**IMPORTANT NOTE**: The code chunks that follow have a setting of ` eval=FALSE`, in order to allow you to compile/knit the rest of the file without errors. As you get to each chunk, you should **delete** the `eval=FALSE` parts, and the commas preceding them, leaving just a `{r}`.
 
 At this point we may want to compare the individual county percentages with the overall state percentage of black population. We compute this percentage now, and along the way introduce two new commands.
 
-The first command (`sum`) allows us to add up values across rows. In this instance, we want to compute the total number of blacks in the state of Indiana. We do this by computing the total number in a county by multiplying the black proportion with the county population, then add these all up:
+The first command (`sum`) allows us to add up values across rows. In this instance, we want to compute the total number of blacks in the state of Indiana. We do this by the following steps:
+
+- Compute the total number of black residents in a county by multiplying the black proportion with the county population. (We divide by $100$ since the data values are percentages and not proportions.)
+- We add all these per-county counts across the state.
+
 ```{r, eval=FALSE}
 blackPopIndiana <- sum(~black / 100 * pop2010, data=indianaCounties)
 ```
@@ -156,7 +162,7 @@ We now add that percent to our histogram of the black distribution (you did do a
 ladd(panel.abline(v=9.127))
 ```
 
-This is a considerably more complicated command, but it basically says the following:
+This is a somewhat complicated command, but it basically says the following:
 
 - We want to *add* to the previous graph (`ladd`)
 - The shape we want to add is that of a line (`panel.abline`)
@@ -164,9 +170,9 @@ This is a considerably more complicated command, but it basically says the follo
 
 We will see later variations of this command for other graph addins.
 
-How many counties in Indiana are above the state percentage? How is it possible that the state percentage is so high given that so few counties are above it?
+For how many counties in Indiana is the black percentage higher than the overall black percentage in the state? How is it possible that the state percentage is so high given that so few counties are above it?
 
-> Write your answer here.
+> Put your answer here.
 
 ## Poverty across the States
 
@@ -179,9 +185,9 @@ Create a histogram of the poverty rates across all counties in the U.S. and desc
 
 > Describe the distribution here.
 
-What are the counties that stand out as having extremely high poverty rates? Can you find some plausible explanation for these high poverty rates (Google search encouraged). Make sure to look at the overall `counties` data, not just the Indiana counties.
+What are the counties that stand out as having relatively high poverty rates? (**NOTE**: Make sure to look at the overall `counties` data, not just the Indiana counties.) Try to find some plausible explanation for these high poverty rates (Google search encouraged).
 
-> Type your answer here.
+> Put your answer here.
 
 Compute the overall poverty rate in the U.S. in 2010. In order to do that, you need to copy and suitably modify the one-line and three-line chunks we used earlier to compute the black percentage in Indiana.
 
@@ -191,7 +197,7 @@ Compute the overall poverty rate in the U.S. in 2010. In order to do that, you n
 
 What is the overall poverty rate? Where does this fall in your distribution (you can use `ladd` to add it to the graph if you wish)?
 
-> Type your answer here.
+> Put your answer here.
 
 To compare across states, a first step could be looking at the county percentages in a boxplot against the states:
 ```{r, fig.height=10}
@@ -204,35 +210,36 @@ You might be tempted to use this plot to determine if a state has a higher level
 bwplot(state~poverty, data=counties %>% filter(state == "Rhode Island" | state == "New Hampshire"))
 ```
 
-But in reality the overall poverty rate in Rhode Island is 12.19%, which is higher than New Hampshire's 7.83%. Explain how this can happen.
+But in reality the overall poverty rate in Rhode Island is 12.19%, which is higher than New Hampshire's 7.83%. So even though most counties in Rhode Island have a *lower* poverty rate than most counties in New Hampshire, the overall poverty rate in Rhode Island is actually *higher* than in New Hampshire. Explain how this "paradoxical" result is possible.
 
-> Type your answer here.
+> Put your answer here.
 
-Looking again at the first boxplot, we can see that Kentucky has a larger IQR/spread than Kansas. Explain what that means in practical terms.
+Looking again at the first boxplot, we can see that Kentucky has a larger IQR/spread than does Kansas. Explain what that means in practical terms.
 
-> Type your answer here.
+> Put your answer here.
 
 In the boxplot for Hawaii, there seem to be only 3 dots. What is going on? Does Hawaii have exactly three counties?
 
-> Type your answer here.
+> Put your answer here.
 
 We can examine and compare the IQRs across all states:
 ```{r, eval=FALSE}
 povertyIqrs <- iqr(~poverty|state, data=counties)
 ```
-Note the formula syntax here: `~poverty|state`. This should be read as: "work with the poverty values grouped by state". The method used in the front (`iqr` in this case) tells R what to do with these grouped values. We could have used for example `median` or `mean` or `sd` (standard deviation) instead.
+Note the formula syntax here: `~poverty|state`. This should be read as: "work with the poverty values grouped by state". The command used in the front (`iqr` in this case) tells R what to do with these grouped values. We could have used for example `median` or `mean` or `sd` (standard deviation) instead.
 
-In order to visualize the distribution of these iqrs, we sort them and then put them in a dotplot. We performed a similar computation using the pipe operator (`%>%`) to visualize the median female percentage by state in Lab 2. Do something similar in this instance (note the extra option of `fig.height=10`, this makes the graphs take up more vertical space than they normally would --- the default is 5):
+In order to visualize the distribution of these iqrs, we sort them and then put them in a dotplot. We performed a similar computation using the pipe operator (`%>%`) to visualize the median female percentage by state in Lab 2. Do something similar in this instance:
 ```{r, fig.height=10}
 "Replace this"
 ```
+Note the extra option of `fig.height=10` in the `{r}` part. This makes the graph take up more vertical space than it normally would --- the default is 5.
 
 Which states have unusually *high* IQRs? What does that mean for these states?
 
-> Type your answer here.
+> Put your answer here.
 
-DC appears to have an IQR of 0. Does this tell us anything?
+DC appears to have an IQR of 0. Explain.
 
-> Type your answer here.
+> Put your answer here.
 
-Look back at the lab 3 instructions to find out how to submit your completed report. Don't forget to click the red button to close your RStudio session, close all windows and log out, before you leave the lab.
+Look back at the lab 3 instructions to find out how to submit your completed report. Don't forget to click the red button to close your RStudio session, close all windows and log out from the computer before you leave the lab.

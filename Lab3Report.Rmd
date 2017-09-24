@@ -1,5 +1,5 @@
 ---
-title: 'Lab 3: Type your title here'
+title: "Lab 3: Type your title here. Leave the enclosing quotes."
 author: "Type your name here"
 date: "Type the date here"
 output:
@@ -12,49 +12,13 @@ output:
   word_document: default
 ---
 
-This first section is meant to familiarize you with the format and syntax used in RMarkdown documents. Please go slowly through this section, comparing the text in the RMarkdown format to the output in the corresponding HTML file, to learn about the different components.
+# Markdown Syntax
 
-# Introduction to Markdown Syntax
+There are some key syntax elements that you will need to familiarize yourself with at some point, for example using the pound sign above to create a section heading. Refer to the [RMarkdown cheatsheet](https://hanoverstatslabs.github.io/resources/rmarkdownBasics.html) for details. But as you go through this file, notice the bits of syntax like asterisks and backticks, and how they affect the output file (bold text, typewriter font etc.).
 
-We start a new section by using the pound sign, followed by the section title. The sections will be automatically numbered because of our header specifications.
+We will however discuss in more detail how to interject code into our text, using R code chunks.
 
-## Use more pounds for deeper subsections
-
-Start a new paragraph by simply adding a blank line.
-
-> Make a blockquote out of text by preceding the lines
-> with the "greater than" symbol.
->
->> You can also make nested blockquotes with more "greater than" signs.
-
-Emphasize *text* (italics) by surrounding the text in single asterisks. Emphasize **more strongly** (bold) with double asterisks.
-
-**Note**: When working with a RMarkdown report, it is a good idea to not use the console much, as the report window and the console window do not communicate directly with each other; actions you take in the console will not count when you "knit" your report. For that reason it is advisable to maximize the RMarkdown window by clicking the resizing icon on its upper-right corner. This will hide/minimize the console window.
-
-- Make unnumbered lists by starting each item with a dash.
-- Here's the second item!
-    - You can create a sublist by starting the line with 4 spaces.
-- **DO NOW**: Make the word "unnumbered" in the first bullet point appear in bold, and the word "second" in the second bullet point appear in italics.
-
-1. Numbered lists use numbers
-2. followed by periods.
-3. **DO NOW**: Add a fourth item to this list.
-
-Surrounding some text with `single backticks` makes it appear in "typewriter" font. This is useful for inline code. You probably won't need to use this feature much.
-
-You can add horizontal rules by a sequence of three or more asterisks:
-
-***********
-
-They will be quite faint.
-
-You can easily add subscripts~2~ or superscripts^3^.
-
-There are many more specialized features that are available. A quick Google search can usually provide you with some resources, though the above should be sufficient for most reports.
-
-***********
-
-**DO NOW**: Replace the above ruler with a new subsection (two pound signs) with title "Introducing R Chunks".
+## R Code Chunks
 
 R code chunks look like this (see below.) Note: the "backtick" key is typically found to the left of the number keys row.
 ```{r}
@@ -62,7 +26,7 @@ R code chunks look like this (see below.) Note: the "backtick" key is typically 
 ```
 When the file compiles, the R code *chunks* will be evaluated and the results will be inserted into the document. That behavior can be changed (e.g. hide the results or prevent the code itself from appearing) by adding more in the `{r}` part. We will see how to do that in a little while.
 
-You can insert a new code chunk by either typing the backticks and `{r}` yourself, or by using the `Insert` pulldown in the toolbar at the top of the RMarkdown window. Choose `R` from the pulldown and the appropriate code chunk will be inserted at your cursor.
+You can insert a new code chunk by by using the `Insert` pulldown in the toolbar at the top of the RMarkdown window. Choose `R` from the pulldown and the appropriate code chunk will be inserted at your cursor.
 
 **DO THIS NOW**: Insert a new code chunk and put a simple mathematical expression inside the chunk. Save and knit the document to see the added chunk.
 
@@ -87,7 +51,7 @@ By default this chunk will print out lots of messages which we do not want to se
 - Not show warnings, not show messages
 - Show nothing, but run the code (option in the **Output** pulldown)
 
-When you click **Apply**, this should add a couple of options to the top of your chunk, and when you compile/knit the report this chunk will not show up at all.
+When you click **Apply**, this should add a couple of options to the top of your chunk. The output will not change *until* you compile/knit the report. When you do so, the changes to this chunk will be reflected in the output and this chunk will not show up at all.
 
 You should go ahead and **run your chunk now**. This will load the `hanoverbase` package, which we will use in the remainder.
 
@@ -101,29 +65,30 @@ To fully load the dataset we need to use the `View(counties)` command. BUT this 
 
 Let us begin our investigations by considering the percent of Black population in the counties of Indiana. As a first step, we should create a new dataset containing just the counties in Indiana. Do this in the chunk below, by replacing the `"replace this"` part with working code. This should be very similar to the code we used in Lab 2 to pick out all the counties of Alaska.
 ```{r}
-indianaCounties <- "replace this"
+indianaCounties <- "replace this, remove the quotes"
 ```
 If you have done this correctly, then after you run the chunk you should see a new entry in the Environment pane, containing the `indianaCounties` data with 92 observations on 32 variables.
 
 Type into this next chunk the code for producing the five number summary for the percent of black population in the Indiana counties dataset. Hint: Which column (variable) contains the relevant data?
 ```{r}
-"Replace this"
+"Replace this, remove the quotes"
 ```
 If you have done this correctly, then when you run the chunk you should see the five number summary and the mean, standard deviation and count. You should be seeing a median of $0.65$ and a mean of $2.54$. Notice that the mean is much larger than the median. What does that indicate about the underlying distribution?
 
-> Put your answer here.
+> Put your answer here. The `>` symbol is how you create a "blockquote" in R Markdown.
+> The text in a block-quote is typically indented and made to stand out.
+> You can use multiple lines in a blockquote but they all become a single paragraph.
+> You can also write very long lines and they will wrap around. Pay attention to the line numbering on the left. You only need to type another `>` sign if you are truly starting a new line.
+>
+> Add an "empty" line with just the `>` sign in it if you really want to create a new paragraph within the blockquote.
 
 We should next produce a suitable graph to visualize the distribution of this quantitative variable. Do so in this code chunk.
 ```{r}
-"Replace this"
+"Replace this, remove the quotes"
 ```
 What are the main features of the distribution (range, modes, skewness, outliers)? Put your answer in the blockquote below. Make sure to express your answers in the context of this particular data. Use plain English as much as possible, as if explaining to a friend. (Do this in general for all such questions.)
 
 > Answer here.
-> You can use multiple lines but they all become a single paragraph.
-> You can also write very long lines and they will wrap around. Pay attention to the line numbering on the left. You only need to type another `>` sign if you are truly starting a new line.
->
-> Add an "empty" line with just the `>` sign in it if you want to create a new paragraph within the blockquote.
 
 Don't forget to knit and look at how your answer appears in the HTML view.
 
@@ -170,7 +135,7 @@ This is a somewhat complicated command, but it basically says the following:
 
 We will see later variations of this command for other graph addins.
 
-For how many counties in Indiana is the black percentage higher than the overall black percentage in the state? How is it possible that the state percentage is so high given that so few counties are above it?
+For how many counties in Indiana is the black percentage higher than the overall black percentage in the state (the graph will not really tell you that, you should look at the actual data table)? How is it possible that the state percentage is so high given that so few counties are above it?
 
 > Put your answer here.
 
@@ -232,6 +197,7 @@ In order to visualize the distribution of these iqrs, we sort them and then put 
 ```{r, fig.height=10}
 "Replace this"
 ```
+
 Note the extra option of `fig.height=10` in the `{r}` part. This makes the graph take up more vertical space than it normally would --- the default is 5.
 
 Which states have unusually *high* IQRs? What does that mean for these states?

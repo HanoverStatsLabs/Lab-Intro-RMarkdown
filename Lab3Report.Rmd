@@ -14,7 +14,7 @@ output:
 
 # Markdown Syntax
 
-There are some key syntax elements that you will need to familiarize yourself with at some point, for example using the pound sign above to create a section heading. Refer to the [RMarkdown cheatsheet](https://hanoverstatslabs.github.io/resources/rmarkdownBasics.html) for details. But as you go through this file, notice the bits of syntax like asterisks and backticks, and how they affect the output file (bold text, typewriter font etc.).
+There are some key syntax elements that you will need to familiarize yourself with at some point, for example using the pound sign above to create a section heading. Refer to the [cheatsheet](https://hanoverstatslabs.github.io/resources/cheatSheet.html) for details. But as you go through this file, notice the bits of syntax like asterisks and backticks, and how they affect the output file (bold text, typewriter font etc.).
 
 We will however discuss in more detail how to interject code into our text, using R code chunks.
 

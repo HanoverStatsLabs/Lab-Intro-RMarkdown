@@ -111,11 +111,11 @@ The first command (`sum`) allows us to add up values across rows. In this instan
 - We add all these per-county counts across the state.
 
 ```{r, eval=FALSE}
-blackPopIndiana <- sum(~black / 100 * pop2010, data=indianaCounties)
+blackPopIndiana <- sum(~black / 100 * pop2020, data=indianaCounties)
 ```
 When you run this chunk, the Environment pane should have a new entry for `blackPopIndiana`. Next we compute the overall population in Indiana, and combine the two to find the state percentage:
 ```{r, eval=FALSE}
-popIndiana <- sum(~pop2010, data=indianaCounties)
+popIndiana <- sum(~pop2020, data=indianaCounties)
 blackPercentIndiana <- blackPopIndiana / popIndiana * 100
 blackPercentIndiana
 ```
@@ -154,7 +154,7 @@ What are the counties that stand out as having relatively high poverty rates? (*
 
 > Put your answer here.
 
-Compute the overall poverty rate in the U.S. in 2010. In order to do that, you need to copy and suitably modify the one-line and three-line chunks we used earlier to compute the black percentage in Indiana.
+Compute the overall poverty rate in the U.S. in 2020. In order to do that, you need to copy and suitably modify the one-line and three-line chunks we used earlier to compute the black percentage in Indiana.
 
 ```{r}
 "Replace this section with the appropriate commands."

@@ -175,7 +175,7 @@ You might be tempted to use this plot to determine if a state has a higher level
 bwplot(state~poverty, data=counties %>% filter(state == "Rhode Island" | state == "New Hampshire"))
 ```
 
-But in reality the overall poverty rate in Rhode Island is 12.19%, which is higher than New Hampshire's 7.83%. So even though most counties in Rhode Island have a *lower* poverty rate than most counties in New Hampshire, the overall poverty rate in Rhode Island is actually *higher* than in New Hampshire. Explain how this "paradoxical" result is possible.
+But in reality the overall poverty rate in Rhode Island is 11.59%, which is higher than New Hampshire's 7.43%. So even though most counties in Rhode Island have a *lower* poverty rate than most counties in New Hampshire, the overall poverty rate in Rhode Island is actually *higher* than in New Hampshire. Explain how this "paradoxical" result is possible.
 
 > Put your answer here.
 
